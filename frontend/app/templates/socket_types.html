@@ -4,6 +4,32 @@
 
 {% block content %}
 
+    <style>
+        .custom-search-btn {
+            background-color: #1e534f; 
+            border-color: #41c6a2; 
+            color: white; 
+        }
+
+        .custom-search-btn:hover {
+            background-color: #41c6a2;
+            border-color: #1e534f;
+        }
+
+        a:hover {
+            background-color: #41c6a2; 
+            border-color: #1e534f;
+            border-radius: 5px; 
+        }
+
+        #resultContainer {
+            background-color: rgba(203, 209, 214, 0.682);
+            padding: 10px;
+            border-radius: 5px;
+            border: 2px solid #575f5e;
+        }
+    </style>
+
     <div class="container mt-5">
         <h1>Discover what socket type you're looking at!</h1>
 
@@ -13,7 +39,7 @@
             <div class="form-group">
                 {{ form.zone_name(class="form-control", placeholder="Enter street name") }}
             </div>
-            {{ form.submit(class="btn btn-primary") }}
+            {{ form.submit(class="btn custom-search-btn") }}
         </form>
 
         <!-- Display the result here -->

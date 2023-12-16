@@ -29,7 +29,7 @@ def test_street_name_exists():
 
 def test_street_name_does_not_exist():
     response = client.get("/module/search/VIA CASALSERUGO")
-    expected_error = "Unfortunately the street name you inserted is not present in our database"
+    expected_error = "Unfortunately the street VIA CASALSERUGO is not present in our database"
     assert response.json() == expected_error
 
 
@@ -60,7 +60,7 @@ def test_numbers_of_stations_exists():
 def test_numbers_of_stations_does_not_exist():
     response = client.get("/get_charging_stations/NONEXISTENTSTREET")
     assert response.status_code == 200
-    expected_error = {"error": f"The street 'NONEXISTENTSTREET' is not present in the dataset."}
+    expected_error ="Unfortunately, the street 'NONEXISTENTSTREET' is not present in our database."
     assert response.json() == expected_error
     
 
@@ -74,7 +74,7 @@ def test_socket_types_exists():
 def test_socket_types_does_not_exist():
     response= client.get("/socket_types_by_zone/NONEXISTENTZONE")
     assert response.status_code == 500
-    expected_error = {"Unfortunately, the street 'NONEXISTENTZONE' is not present in the dataset."}
+    expected_error = {"detail": f"Unfortunately the address NONEXISTENTZONE is not present in our database"}
     assert response.json() == expected_error
 
 

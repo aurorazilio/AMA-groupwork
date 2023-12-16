@@ -12,25 +12,28 @@
 
     
     <style>
-        /* Applying the background image to cover the entire page */
         html {
             background-image: url("{{ url_for('static', filename='charging_station.jpg') }}");
-            /* Setting the background image to cover so that it covers the entire page */
             background-size: 100% auto;
-            /* Positioning the image to the center so that it's viewed properly */
             background-position: 0px -160px;
-            /* Adding a background color in case the image is unavailable */
             background-color: #2a313b;
-            /* Setting the background image to stay fixed when scrolling */
             background-attachment: fixed;
         }
     
         body {
-            background-color: rgba(255, 255, 255, 0.2); /* Setting the body background color to transparent */
+            background-color: rgba(255, 255, 255, 0.2);
         }
 
         body, h1, h2, h3, h4, h5, h6, p, a, li, span {
             color: white !important;
+        }
+
+        .navbar-custom {
+            background-color: #1e534f;
+        }
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-nav .nav-link {
+            color: #ffffff; /
         }
     </style>
 
@@ -49,7 +52,8 @@
 
 
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.21.3/dist/bootstrap-table.min.css">
-    <nav class="navbar navbar-expand-md navbar-light" style="background-color: rgba(255, 255, 255, 0.2);">
+
+    <nav class="navbar navbar-expand-md navbar-custom">
 
         <a class="navbar-brand"> &nbsp;&nbsp;&nbsp;&nbsp;E-Atlas Milano</a>
 

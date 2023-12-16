@@ -5,14 +5,12 @@
 {% block content %}
 
     <div class="container mt-5">
-        <h1>Hello, search for the different socket types!</h1>
-        <p>This is a page for interacting with a FastAPI backend.</p>
+        <h1>Discover what socket type you're looking at!</h1>
 
         <!-- WTForms Form to get input from the user -->
         <form method="POST" action="">
             {{ form.csrf_token }}
             <div class="form-group">
-                {{ form.zone_name.label }}
                 {{ form.zone_name(class="form-control", placeholder="Enter street name") }}
             </div>
             {{ form.submit(class="btn btn-primary") }}

@@ -71,7 +71,7 @@ def get_charging_stations_provider_given_street_name(street_name):
     if not charging_station.empty:
         return f"The provider for the charging station present in {street_name} is {charging_station['titolare'].values[0]}"
     else:
-        return "Unfortunately the street name you inserted is not present in our database"
+        return f"Unfortunately the street name {street_name} is not present in our database"
 
 
 @app.get('/module/lookfor/{provider_name}')
@@ -119,7 +119,7 @@ def numbers_of_stations_per_via(street_name):
         info_vie = number_of_stations
         return f"The number of charging stations in '{street_name}' is {info_vie}"
     else:
-        return f"The street '{street_name}' is not present in the dataset."
+        return f"Unfortunately, the street '{street_name}' is not present in the dataset."
 
 
 @app.get('/get_charging_stations/{street_name}')
@@ -140,7 +140,7 @@ def numbers_of_stations_per_via(street_name: str):
         number_of_stations = selected_street['numero_col'].sum()  
         return f'The number of charging stations in {street_name} is {str(number_of_stations)}'
     else:
-        return {"error": f"The street '{street_name}' is not present in the dataset."}
+        return {"error": f"Unfortunately, the street '{street_name}' is not present in the dataset."}
 
 
 def numbers_of_stations_per_via(street_name_input: str = None):
@@ -179,12 +179,13 @@ def get_socket_types_by_zone(zone: str):
         zone=zone.upper()
         zone_data = df[df['localita'] == zone]
         if zone_data.empty:
-            raise HTTPException(status_code=404, detail=f"Zone '{zone}' not found.")
+            raise HTTPException(status_code=404, detail=f"Unfortunately, the zone {zone} is not present in the dataset")
         socket_types = zone_data['infra'].unique().tolist()
 
         return f'In {zone} the type of socket is {socket_types}'
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        error_message= f'Unfortunately, the address {zone} is not present in the dataset'
+        raise HTTPException(status_code=500, detail=error_message)
 
 
 @app.get("/socket_types_by_zone/{zone}")

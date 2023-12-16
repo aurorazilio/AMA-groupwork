@@ -4,9 +4,36 @@
 
 {% block content %}
 
+    <style>
+        .custom-background {
+            background-color: rgba(203, 209, 214, 0.682);
+            padding: 10px; 
+            border-radius: 5px; 
+            border: 2px solid #575f5e;
+        }
+
+        .custom-search-btn {
+            background-color: #1e534f; 
+            border-color: #41c6a2; 
+            color: white; 
+        }
+
+        .custom-search-btn:hover {
+            background-color: #41c6a2;
+            border-color: #1e534f;
+        }
+
+        #resultContainer {
+            background-color: rgba(203, 209, 214, 0.682);
+            padding: 10px;
+            border-radius: 5px;
+            border: 2px solid #575f5e;
+        }
+    </style>
+
     <div class="container mt-5">
         <h1>Find the number of charging stations in each street</h1>
-        <p>By entering the name of the street you're loking for, you'll get 
+        <p class="custom-background">By entering the name of the street you're loking for, you'll get 
             the number of charging stations currently present in that street.</p>
 
         <!-- WTForms Form to get input from the user -->
@@ -14,9 +41,9 @@
             {{ form.csrf_token }}
             <div class="form-group">
                 {{ form.street_name.label }}
-                {{ form.street_name(class="form-control", placeholder="Enter street name") }}
+                {{ form.street_name(class="form-control", placeholder="Enter street name for the city of Milan") }}
             </div>
-            {{ form.submit(class="btn btn-primary") }}
+            {{ form.submit(class="btn custom-search-btn") }}
         </form>
 
         <!-- Display the result here -->

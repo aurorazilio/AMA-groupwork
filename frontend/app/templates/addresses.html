@@ -1,12 +1,45 @@
 {% extends 'base.html' %}
 
-{% block title %} Internal of Frontend {% endblock %}
+{% block title %} Streets {% endblock %}
 
 {% block content %}
 
+    <style>
+        .custom-background {
+            background-color: rgba(87, 95, 94, 0.852);
+            padding: 10px; 
+            border-radius: 5px; 
+            border: 2px solid #575f5e;
+        }
+
+        .custom-search-btn {
+            background-color: #1e534f; 
+            border-color: #41c6a2; 
+            color: white; 
+        }
+
+        .custom-search-btn:hover {
+            background-color: #41c6a2;
+            border-color: #1e534f;
+        }
+
+        a:hover {
+            background-color: #41c6a2; 
+            border-color: #1e534f;
+            border-radius: 5px; 
+        }
+
+        #resultContainer {
+            background-color: rgba(87, 95, 94, 0.852);
+            padding: 10px;
+            border-radius: 5px;
+            border: 2px solid #575f5e;
+        }
+    </style>
+
     <div class="container mt-5">
         <h1>Find the streets in your area to recharge your car!</h1>
-        <p>Select the area</p>
+        <p class="custom-background">Select a specific area to find out all the locations where you can find charging stations. </p>
 
         <!-- WTForms Form to get input from the user -->
         <form method="POST" action="">
@@ -20,7 +53,7 @@
                     {% endfor %}
                 </select>
             </div>
-            {{ form.submit(class="btn btn-primary") }}
+            {{ form.submit(class="btn custom-search-btn") }}
         </form>
          <!-- Display the result here -->
         <div id="resultContainer" class="mt-3">

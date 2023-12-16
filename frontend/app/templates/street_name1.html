@@ -1,12 +1,60 @@
 {% extends 'base.html' %}
 
-{% block title %} Provider given street name {% endblock %}
+{% block title %} Provider Given Street Name {% endblock %}
 
 {% block content %}
 
+    <style>
+        .custom-background {
+            background-color: rgba(87, 95, 94, 0.852);
+            padding: 10px; 
+            border-radius: 5px; 
+            border: 2px solid #575f5e;
+        }
+
+        .custom-search-btn {
+            background-color: #1e534f; 
+            border-color: #41c6a2; 
+            color: white; 
+        }
+
+        .custom-search-btn:hover {
+            background-color: #41c6a2;
+            border-color: #1e534f;
+        }
+
+        .custom-link {
+            text-decoration: none; 
+            display: inline-block; 
+            margin: 15px; 
+            border: 1px solid #41c6a2; 
+            border-radius: 5px; 
+            padding: 10px 10px; 
+            background-color: #1e534f; 
+            color: white; 
+            font-size: 16px; 
+            cursor: pointer; 
+        }
+      
+        a:hover {
+            background-color: #41c6a2; 
+            border-color: #1e534f;
+            border-radius: 5px; 
+        }
+
+        #resultContainer {
+            background-color: rgba(87, 95, 94, 0.852);
+            padding: 10px;
+            border-radius: 5px;
+            border: 2px solid #575f5e;
+        }
+
+    </style>
+
     <div class="container mt-5">
-        <h1> Hello everyone!</h1>
-        <p> This is a page implemented to return a provider for each charging station present in a given street name of Milan</p>
+        <h1> Find your matching provider given a street in Milan!</h1>
+        <p class="custom-background"> Enter a street name and find out if the charging station of that specific street is compatible with the provider of your car! <br>
+        </p>
         
         <!-- WTForms Form to get input from the user-->
         <form method="POST" action="">
@@ -15,7 +63,7 @@
                 {{ form.street_name.label}}
                 {{ form.street_name(class="form-control", placeholder="Enter a street name for the city of Milan")}}
             </div>
-        {{ form.submit(class="btn btn-primary") }}
+        {{ form.submit(class="btn custom-search-btn") }}
         </form>
 
         <!-- Display the result here-->
@@ -28,7 +76,21 @@
             {% endif %}
         </div>
     
-    
+        <p class="custom-background" style="margin-top: 20px"> Here you can find more details about each providers' services! Click on the button and you will be redirected to their websites.</p>
+        <a href="https://www.bec.energy/tariffe/" class="custom-link" target="_blank">
+            <button>BeCharge</button>
+        </a>
+        <a href="https://www.a2a.it/casa/soluzioni-di-ricarica-fuori-casa" class="custom-link" target="_blank">
+            <button>A2A Energy Solutions</button>
+        </a>
+        <a href="https://www.queenergy.it/prezzi/" class="custom-link" target="_blank">
+            <button>NHP</button>
+        </a>
+        <a href="https://www.enelxway.com/it/it/app-servizi-ricarica/tariffe-abbonamenti" class="custom-link" target="_blank">
+            <button>ENEL X Mobility</button>
+        </a>
+
+
     </div>
 
 {% endblock %}

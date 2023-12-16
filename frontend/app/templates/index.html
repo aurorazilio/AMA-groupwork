@@ -1,12 +1,32 @@
 {% extends 'base.html' %}
 
-{% block title %} Homepage of Frontend {% endblock %}
+{% block title %} Homepage of E-Atlas Milano {% endblock %}
 
 {% block content %}
+
+    <style>
+        h1,h3 {
+            margin: 0 auto;
+            width: fit-content;
+        }
+
+        .custom-background {
+            background-color: rgba(87, 95, 94, 0.852);
+            padding: 10px; 
+            border-radius: 5px; 
+            border: 2px solid #575f5e;
+        }
+
+        a:hover {
+            background-color: #41c6a2; 
+            border-color: #1e534f;
+            border-radius: 5px; 
+        }
+    </style>
     <div class="container mt-5">
         <h1>Hello, traveler!</h1>
         <h3>Welcome to our EV Charging Station Information Hub!</h3>
-        <p>Our software provides quick access to essential data regarding electric vehicle charging stations in Milan. 
+        <p class="custom-background">Our software provides quick access to essential data regarding electric vehicle charging stations in Milan. 
             
             <br>Here's what you can do in each section:
             <br>

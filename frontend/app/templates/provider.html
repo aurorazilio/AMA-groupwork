@@ -4,9 +4,48 @@
 
 {% block content %}
 
+    <style>
+        .custom-background {
+            background-color: rgba(87, 95, 94, 0.852);
+            padding: 10px; 
+            border-radius: 5px; 
+            border: 2px solid #575f5e;
+        }
+
+        .custom-search-btn {
+            background-color: #1e534f; 
+            border-color: #41c6a2; 
+            color: white; 
+        }
+
+        .custom-search-btn:hover {
+            background-color: #41c6a2;
+            border-color: #1e534f;
+        }
+
+        .result-table {
+            background-color: rgba(87, 95, 94, 0.852);
+            padding: 10px;
+            border-radius: 5px;
+            border: 2px solid #575f5e;
+        }
+
+        a:hover {
+            background-color: #41c6a2;
+            border-color: #9aa8b4;
+            border-radius: 5px; 
+        }
+
+        .result-item {
+            padding: 8px;
+            border-bottom: 1px solid #9aa8b4;
+        }
+
+    </style>
+
     <div class="container mt-5">
         <h1>Find the charging points offered by your provider!</h1>
-        <p>You will see: 
+        <p class="custom-background">You will see: 
             <br>- Street name and house number 
             <br>- Type of charging points  (N: Normal, F: Fast, Q: Quadricycle)
             <br>- Number of charging points</p>
@@ -26,11 +65,11 @@
                 <option value="PowerPoint City Car">PowerPoint City Car</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn custom-search-btn">Submit</button>
     </form>
     <p></p>
     {% if result %}
-    <table>
+    <table class="result-table">
         <thead>
             <tr>
                 <th>Street and house number</th>

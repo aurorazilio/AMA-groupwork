@@ -25,7 +25,7 @@ class AddressesForm(FlaskForm):
     if response.status_code == 200:
         areas = response.json()
     area_name = SelectField('Area name:', choices=[(area, area) for area in areas])
-    submit = SubmitField('Get Area_name from FastAPI Backend')
+    submit = SubmitField('Submit')
 
 
 class ProviderForm(FlaskForm):
@@ -34,17 +34,17 @@ class ProviderForm(FlaskForm):
     
 class QueryForm(FlaskForm):
     street_name = StringField('Street name:')
-    submit = SubmitField('Get number of columns from FastAPI Backend')
+    submit = SubmitField('Submit')
 
 
 class ProviderstreetnameForm(FlaskForm):
     street_name = StringField('Street Name:')
-    submit = SubmitField('Search')
+    submit = SubmitField('Submit')
 
     
 class ZoneForm(FlaskForm):
     zone_name=StringField('Zone name')
-    submit=SubmitField('Get types of sockets from FASTAPI Backend')
+    submit=SubmitField('Submit')
     
 
 @app.route('/')
@@ -55,9 +55,7 @@ def index():
     Returns:
         str: Rendered HTML content for the index page.
     """
-
-    date_from_backend = fetch_date_from_backend()
-    return render_template('index.html', date_from_backend=date_from_backend)
+    return render_template('index.html')
   
 
 def fetch_date_from_backend():
@@ -175,7 +173,7 @@ def number_stations():
             data = response.json()
             return render_template('number_stations.html', form=form, result=data, error_message=error_message)
         else:
-            error_message = f'Error: Unable to fetch dict_vie for {street_name} from FastAPI Backend'
+            error_message = f'Unfortunately there are no charging stations in {street_name}'
 
     return render_template('number_stations.html', form=form, result=None, error_message=error_message)
 

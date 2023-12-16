@@ -31,13 +31,14 @@
     </style>
 
     <div class="container mt-5">
-        <h1>Discover what socket type you're looking at!</h1>
+        <h1>Discover what socket type is present in the charging stations!</h1>
+        <p class="custom-background">By entering the address with the house number, discover the type of socket present in the charging stations.</p>
 
         <!-- WTForms Form to get input from the user -->
         <form method="POST" action="">
             {{ form.csrf_token }}
             <div class="form-group">
-                {{ form.zone_name(class="form-control", placeholder="Enter street name") }}
+                {{ form.zone_name(class="form-control", placeholder="Enter the specific address for the city of Milan") }}
             </div>
             {{ form.submit(class="btn custom-search-btn") }}
         </form>

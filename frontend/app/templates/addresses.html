@@ -1,3 +1,4 @@
+ADDRESSES.HTML
 {% extends 'base.html' %}
 
 {% block title %} Internal of Frontend {% endblock %}
@@ -5,89 +6,40 @@
 {% block content %}
 
     <div class="container mt-5">
-        <h1>Hello, this is a page to find addresses based on areas!</h1>
-        <p>This is an internal page for interacting with a FastAPI backend.</p>
+        <h1>Find the streets in your area to recharge your car!</h1>
+        <p>Select the area</p>
 
         <!-- WTForms Form to get input from the user -->
         <form method="POST" action="">
             {{ form.csrf_token }}
             <div class="form-group">
                 {{ form.area_name.label }}
-                {# Utilizza un campo di selezione (dropdown) invece del campo di testo #}
                 <select name="area_name" class="form-control">
                     <option value="error_message">-no selection-</option>
-                    <option value="DUOMO">DUOMO</option>
-                    <option value="MAGENTA - S. VITTORE"> MAGENTA - S. VITTORE</option>
-                    <option value="CENTRALE">CENTRALE</option>
-                    <option value="CITTA' STUDI">CITTA' STUDI</option>
-                    <option value="BARONA">BARONA</option>
-                    <option value="GUASTALLA">GUASTALLA</option>
-                    <option value="GIARDINI PORTA VENEZIA">GIARDINI PORTA VENEZIA</option>
-                    <option value="ISOLA">ISOLA</option>
-                    <option value="BUENOS AIRES - VENEZIA">BUENOS AIRES - VENEZIA</option>
-                    <option value="PORTA ROMANA">PORTA ROMANA</option>
-                    <option value="VIGENTINA">VIGENTINA</option>
-                    <option value="TORTONA">TORTONA</option>
-                    <option value="NAVIGLI">NAVIGLI</option>
-                    <option value="PAGANO">PAGANO</option>
-                    <option value="TRE TORRI">TRE TORRI</option>
-                    <option value="BOVISA">BOVISA</option>
-                    <option value="GARIBALDI REPUBBLICA">GARIBALDI REPUBBLICA</option>
-                    <option value="BICOCCA">BICOCCA</option>
-                    <option value="TICICNESE">TICINESE</option>
-                    <option value="LODI - CORVETTO">LODI - CORVETTO</option>
-                    <option value="TIBALDI">TIBALDI</option>
-                    <option value="UMBRIA - MOLISE">UMBRIA - MOLISE</option>
-                    <option value="DE ANGELI - MONTE ROSA">DE ANGELI - MONTE ROSA</option>
-                    <option value="BRERA">BRERA</option>
-                    <option value="GRECO">GRECO</option>
-                    <option value="SCALO ROMANA">SCALO ROMANA</option>
-                    <option value="LORENTEGGIO">LORENTEGGIO</option>
-                    <option value="GIAMBELLINO">GIAMBELLINO</option>
-                    <option value="SARPI">SARPI</option>
-                    <option value="PARCO LAMBRO - CIMIANO">PARCO LAMBRO - CIMIANO</option>
-                    <option value="MACIACHINI - MAGGIOLINA">MACIACHINI - MAGGOLINA</option>
-                    <option value="LORETO">LORETO</option>
-                    <option value="PADOVA">PADOVA</option>
-                    <option value="XXII MARZO">XXII MARZO</option>
-                    <option value="RIPAMONTI">RIPAMONTI</option>
-                    <option value="BANDE NERE">BANDE NERE</option>
-                    <option value="S. SIRO">S. SIRO</option>
-                    <option value="QUARTO OGGIARO">QUARTO OGGIARO</option>
-                    <option value="FARINI">FARINI</option>
-                    <option value="NIGUARDA - CA' GRANDA">NIGUARDA - CA' GRANDA</option>
-                    <option value="ENERMIA">ENERMIA</option>
-                    <option value="EX OM - MORIVIONE">EX OM - MORIVIONE</option>
-                    <option value="S. CRISTOFORO">S. CRISTOFORO</option>
-                    <option value="LAMBRATE">LAMBRATE</option>
-                    <option value="PARCO FORLANINI - ORTICA">PARCO FORLANINI - ORTICA</option>
-                    <option value="VIALE MONZA">VIALE MONZA</option>
-                    <option value="STADERA">STADERA</option>
-                    <option value="WASHINGTON">WASHINGTON</option>
-                    <option value="PORTELLO">PORTELLO</option>
-                    <option value="FORZE ARMATE">FORZE ARMATE</option>
-                    <option value="GALLARATESE">GALLARATESE</option>
-                    <option value="AFFORI">AFFORI</option>
-                    <option value="QT 8">QT 8</option>
-                    <option value="VILLAPIZZONE">VILLAPIZZONE</option>
-                    <option value="GHISOLFA">GHISOLFA</option>
-                    <option value="ORTOMERCATO">ORTOMERCATO</option>
-                    <option value="DERGANO">DERGANO</option>
-                    <option value="CORSICA">CORSICA</option> 
+                    {% for value, label in form.area_name.choices %}
+                        <option value="{{ value }}">{{ label }}</option>
+                    {% endfor %}
                 </select>
             </div>
             {{ form.submit(class="btn btn-primary") }}
         </form>
-
-        <!-- Display the result here -->
+         <!-- Display the result here -->
         <div id="resultContainer" class="mt-3">
             {% if result %}
-                <p>{{ result }}</p>
+                <ul>
+                    {% for street in result[2:-2].split('","') %}
+                        <li>{{ street }}</li>
+                    {% endfor %}
+                </ul>
             {% endif %}
             {% if error_message %}
                 <p class="text-danger">{{ error_message }}</p>
             {% endif %}
         </div>
-    </div>
+
+
 
 {% endblock %}
+
+
+

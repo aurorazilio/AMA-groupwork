@@ -140,7 +140,7 @@ def numbers_of_stations_per_via(street_name: str):
         number_of_stations = selected_street['numero_col'].sum()  
         return f'The number of charging stations in {street_name} is {str(number_of_stations)}'
     else:
-        return {"error": f"Unfortunately, the street '{street_name}' is not present in the dataset."}
+        return f"Unfortunately, the street '{street_name}' is not present in the dataset."
 
 
 def numbers_of_stations_per_via(street_name_input: str = None):

@@ -74,7 +74,7 @@ def test_socket_types_exists():
 def test_socket_types_does_not_exist():
     response= client.get("/socket_types_by_zone/NONEXISTENTZONE")
     assert response.status_code == 500
-    expected_error = {'detail':''}
+    expected_error = {"Unfortunately, the street 'NONEXISTENTZONE' is not present in the dataset."}
     assert response.json() == expected_error
 
 

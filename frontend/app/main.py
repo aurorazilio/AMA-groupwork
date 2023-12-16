@@ -199,7 +199,7 @@ def socket_types():
             form = ZoneForm()
             return render_template('socket_types.html', form=form, result=data, error_message=error_message)
         else:
-            error_message = f'Error: Unable to fetch data for {zone_name} from FASTAPI backend'
+            error_message = f'Unfortunately, the address {zone_name} is not present in the dataset'
 
     form = ZoneForm()
     return render_template('socket_types.html', form=form, result=None, error_message=error_message)

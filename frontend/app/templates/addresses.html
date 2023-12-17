@@ -58,6 +58,7 @@
          <!-- Display the result here -->
         <div id="resultContainer" class="mt-3">
             {% if result %}
+            <p><b>Streets based on selected area:</b></p>
                 <ul>
                     {% for street in result[2:-2].split('","') %}
                         <li>{{ street }}</li>

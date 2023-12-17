@@ -80,7 +80,7 @@
         <tbody>
             {% for item in result %}
                 <tr class="result-item">
-                    <td>{{ item.localita }}</td>
+                    <td>{{ item.localita|title }}</td>
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;{{ item.tipologia }}</td>
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ item.numero_pdr }}</td>
                 </tr>

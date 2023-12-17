@@ -1,9 +1,9 @@
-# AMA group project 
+# E-Atlas Milan 
  Skeleton Project for the Lab of Software Project Development
 
 # Flask and FastAPI Dockerized Project
 
-This project demonstrates a simple web application using Flask as the frontend and FastAPI as the backend. The frontend allows querying birthdays from the backend using a form. The project is Dockerized for easy deployment.
+This project is a comprehensive system providing information about Electric Vehicle (EV) charging stations in Milan. It consists of both a FastAPI backend and a Flask frontend that collectively serve data related to charging station locations, providers, available sockets, and street information.
 
 ## Architecture
 
@@ -12,12 +12,12 @@ The project follows a simple client-server architecture:
 1. **Frontend (Flask):**
    - Represents the user interface or client side.
    - Built with Flask, a lightweight web framework for Python.
-   - Responsible for rendering web pages and user interaction, including the form for querying the backend.
+   - Responsible for rendering web pages and user interaction.
 
 2. **Backend (FastAPI):**
    - Represents the server or backend of the application.
    - Built with FastAPI, a modern web framework for building APIs with Python.
-   - Handles requests from the frontend, including querying birthdays and providing the current date.
+   - Handles requests from the frontend.
 
 3. **Docker Compose:**
    - Orchestrates the deployment of both frontend and backend as separate containers.
@@ -29,30 +29,31 @@ Bidirectional communication is established between the Frontend (Flask) and Back
 
 ## Project Structure
 
-- `backend/`: FastAPI backend implementation.
-    - Dockerfile: Dockerfile for building the backend image.
-    - main.py: Main backend application file.
-    - requirements.txt: List of Python dependencies for the backend.
-- `frontend/`: Flask frontend implementation.
-    - Dockerfile: Dockerfile for building the frontend image.
-    - static/: Folder for static files (CSS, JavaScript, etc.).
-    - templates/: Folder for HTML templates.
-    - main.py: Main frontend application file.
-    - requirements.txt: List of Python dependencies for the frontend.
+- `backend/`: The FastAPI backend interacts with a dataset containing information about charging columns spread across various areas in Milan. It provides various endpoints to retrieve specific information about charging stations.
+- `frontend/`: The Flask frontend provides a user-friendly interface to interact with the backend functionalities. It includes several forms and routes to query the backend and display the retrieved information.
 - `docker-compose.yml`: Docker Compose configuration for running both frontend and backend.
 
-## Prerequisites
+## Requirements
 
-- Docker
-- Visual Studio Code (Optional, for debugging)
+Backend Requirements
+- Python 3.7+
+- FastAPI
+- Pandas
+
+Frontend Requirements
+- Python 3.7+
+- Flask
+- Flask-WTF
+- WTForms
+- Requests
 
 ## Usage
 
 1. Clone the repository and navigate in the directory:
 
     ```bash
-    git clone REPO_URL
-    cd swdevel-lab-hfarm
+    git clone https://github.com/aurorazilio/AMA-groupwork.git
+    cd AMA-groupwork
     ```
 
 2. Build and run the Docker containers:
@@ -67,7 +68,13 @@ Bidirectional communication is established between the Frontend (Flask) and Back
 
 3. Open your web browser and navigate to [http://localhost:8080](http://localhost:8080) to access the `frontend` and [http://localhost:8081](http://localhost:8081) to access the `backend`.
 
-4. Use the form on the frontend to query birthdays from the backend.
+4. Accessing Frontend Pages
+- /: Home page
+- /number_stations: Number of charging stations
+- /provider: Providers
+- /socket_types: Socket type
+- /addresses: Streets
+- /street_name: Your provider given street name
 
 ## Shutting Down the Docker Containers
 

@@ -77,7 +77,6 @@ def fetch_date_from_backend():
         return 'Area name not available'
 
 
-
 @app.route('/addresses', methods=['GET', 'POST'])
 def addresses():
     """
@@ -98,7 +97,6 @@ def addresses():
         else:
             error_message = f'Error: Unable to fetch area_name for {selected_area} from FastAPI Backend'
     return render_template('addresses.html', form=form, result=None, error_message=error_message)
-
 
 
 @app.route('/provider', methods=['GET', 'POST'])
@@ -206,4 +204,3 @@ def socket_types():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
-
